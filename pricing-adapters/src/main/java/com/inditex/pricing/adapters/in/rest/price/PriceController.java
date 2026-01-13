@@ -28,9 +28,9 @@ public class PriceController {
 
     @GetMapping
     public ResponseEntity<PriceResponseDto> getApplicablePrice(
-            @RequestParam @NotNull @DateTimeFormat(iso = DATE_TIME) LocalDateTime applicationDate,
-            @RequestParam @Min(1) long productId,
-            @RequestParam @Min(1) long brandId
+            @RequestParam("applicationDate") @NotNull @DateTimeFormat(iso = DATE_TIME) LocalDateTime applicationDate,
+            @RequestParam("productId") @Min(1) long productId,
+            @RequestParam("brandId") @Min(1) long brandId
     ) {
         var query = GetApplicablePriceQuery.of(brandId, productId, applicationDate);
 
